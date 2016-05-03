@@ -27,6 +27,8 @@ Obs.: This class needs that before you install Microsoft.OneDrive.SDK which can 
 <br/>
 <b>Devices.BluetoothRfcomm</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth device
 <br/>
+Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxmanifest
+<br/>
 
 <h4>Examples</h4>
 
