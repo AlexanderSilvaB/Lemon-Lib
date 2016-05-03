@@ -107,13 +107,16 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroundTaskHelper.cs" />
-    <Compile Include="ColorHelper.cs" />
-    <Compile Include="Files.cs" />
-    <Compile Include="OneDrive.cs" />
+    <Compile Include="Devices\BluetoothRfcomm.cs" />
+    <Compile Include="Devices\BluetoothDevices.cs" />
+    <Compile Include="Helpers\BackgroundTaskHelper.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Storage\Files.cs" />
+    <Compile Include="Storage\OneDrive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\LemonLib.rd.xml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

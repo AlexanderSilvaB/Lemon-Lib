@@ -47,7 +47,7 @@ namespace LemonLib.Storage
             Scopes = scopes;
         }
 
-        public static async Task TryToLogin()
+        public static async Task LoginWhithoutUI()
         {
             try
             {

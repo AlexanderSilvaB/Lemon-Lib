@@ -5,9 +5,43 @@
     xmlns:local="using:Examples"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White" Click="Button_Click">
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" />
+        </Button>
+        <Grid Grid.Row="0" Grid.Column="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+            <TextBlock x:Name="Title" Text="LemonLib Examples" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
+        </Grid>
+        <SplitView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="PagesSplitView" IsPaneOpen="True">
+            <SplitView.Pane>
+                <ListView x:Name="PagesListView" ItemClick="PagesListView_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="48">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Icon}" Grid.Column="0" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24px"/>
+                                <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame x:Name="PageFrame"/>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>
