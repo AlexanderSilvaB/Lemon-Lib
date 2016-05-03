@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using LemonLib.Helpers;
+using Windows.UI;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Examples
@@ -31,15 +34,20 @@ namespace Examples
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            UI.SetTitleBarColor(UI.AccentColor, Colors.White, UI.GetColor(UI.UIColorType.AccentDark1), UI.GetColor(UI.UIColorType.AccentDark2), UI.DeviceType.Both);
+            UI.SetTitleBarButtonsColor(UI.AccentColor, Colors.White, UI.ButtonState.Normal);
+
             PageFrame.Navigate(typeof(HomePage));
 
             Pages = new List<PageItem>();
 
             Pages.Add(new PageItem() { Icon = "", Name = "ColorHelper", Page = typeof(Samples.ColorHelperPage) });
             //Pages.Add(new PageItem() { Icon = "", Name = "BackgroundTaskHelper", Page = typeof(Samples.BackgroundTaskHelperPage) });
+            Pages.Add(new PageItem() { Icon = "", Name = "UI", Page = typeof(Samples.UIPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "Files", Page = typeof(Samples.FilesPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "OneDrive", Page = typeof(Samples.OneDrivePage) });
             Pages.Add(new PageItem() { Icon = "", Name = "BluetoothRfcomm", Page = typeof(Samples.BluetoothRFCOMMPage) });
+            Pages.Add(new PageItem() { Icon = "", Name = "ClipBoard", Page = typeof(Samples.ClipBoardPage) });
 
             PagesListView.ItemsSource = Pages;
 
@@ -55,6 +63,7 @@ namespace Examples
                 PageFrame.Navigate(typeof(HomePage));
                 Title.Text = "LemonLib Examples";
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+                PagesSplitView.IsPaneOpen = true;
                 e.Handled = true;
             }
         }

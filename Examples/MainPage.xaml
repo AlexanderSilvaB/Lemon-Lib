@@ -9,15 +9,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="48"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White" Click="Button_Click">
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" />
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
         <Grid Grid.Row="0" Grid.Column="1" Background="{ThemeResource SystemControlBackgroundAccentBrush}">
             <TextBlock x:Name="Title" Text="LemonLib Examples" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" Foreground="White"/>
@@ -40,7 +40,7 @@
                 </ListView>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:Name="PageFrame"/>
+                <Frame x:Name="PageFrame" Padding="5"/>
             </SplitView.Content>
         </SplitView>
     </Grid>

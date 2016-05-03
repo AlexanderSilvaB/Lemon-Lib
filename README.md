@@ -8,6 +8,8 @@ A powerfull library for Universal Windows Platform (UWP)
 <b>Storage</b> - Provides classes for storage tasks
 <br/>
 <b>Devices</b> - Provides classes for devices manipulation
+<br/>
+<b>Util</b> - Provides utility classes for UWP apps
 
 <h4>Classes</h4>
 
@@ -16,6 +18,8 @@ A powerfull library for Universal Windows Platform (UWP)
 <b>Helpers.BackgroundTaskHelper</b> - Provides methods to easily register and unregister background tasks
 <br/>
 Obs.: To use this helper you need create a project for the background task and add it to package.appxmanifest
+<br/>
+<b>Helpers.UI</b> - Provides methods manage the app UI such as TitleBar, TitleBarButtons, AccentColor, ...
 <br/>
 <b>Storage.Files</b> - Provides a nice path based way to read and write files in local and roaming directory
 <br/>
@@ -29,6 +33,9 @@ Obs.: This class needs that before you install Microsoft.OneDrive.SDK which can 
 <br/>
 Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxmanifest
 <br/>
+<b>Util.Clipboard</b> - Provives an easy way to set and get content from the clipboard
+<br/>
+
 
 <h4>Examples</h4>
 

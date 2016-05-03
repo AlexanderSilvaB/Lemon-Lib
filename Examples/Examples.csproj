@@ -112,6 +112,9 @@
     <Compile Include="Samples\BluetoothRFCOMMPage.xaml.cs">
       <DependentUpon>BluetoothRFCOMMPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\ClipBoardPage.xaml.cs">
+      <DependentUpon>ClipBoardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\ColorHelperPage.xaml.cs">
       <DependentUpon>ColorHelperPage.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,9 @@
     </Compile>
     <Compile Include="Samples\OneDrivePage.xaml.cs">
       <DependentUpon>OneDrivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\UIPage.xaml.cs">
+      <DependentUpon>UIPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +165,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Samples\ClipBoardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Samples\ColorHelperPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\OneDrivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\UIPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

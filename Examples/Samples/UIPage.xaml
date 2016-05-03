@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Examples.Samples.UIPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Examples.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Grid x:Name="AccentColor" Width="100" Height="100" HorizontalAlignment="Left">
+                    <TextBlock Text="Accent color" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <ToggleSwitch Header="Extend app to TitleBar" Toggled="ToggleSwitch_Toggled"/>
+                <ToggleSwitch Header="IsFullScreen" Toggled="ToggleSwitch_Toggled_2"/>
+                <ToggleSwitch Header="TitleBar color" Toggled="ToggleSwitch_Toggled_1"  OnContent="Red" OffContent="Accent color"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
