@@ -20,6 +20,7 @@ Obs.: To use this helper you need create a project for the background task and a
 <b>Storage.Files</b> - Provides a nice path based way to read and write files in local and roaming directory
 <br/>
 <b>Storage.OneDrive</b> - Provides methods to login, upload, download, delete and many other actions in OneDrive
+<br/>
 Obs.: This class needs that before you install Microsoft.OneDrive.SDK which can be obtained over NuGet
 <br/>
 <b>Devices.BluetoothDevice</b> - Represents a bluetooth device
