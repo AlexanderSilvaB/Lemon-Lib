@@ -24,8 +24,16 @@ namespace LemonLib.Storage
             public DateTime DateTime;
         }
 
+        public static class Scopes
+        {
+            public const string AppFolder = "onedrive.appfolder";
+            public const string ReadWrite = "onedrive.readwrite";
+            public const string Signin = "wl.signin";
+            public const string OfflineAccess = "wl.offline_access";
+        }
+
         private static string AppId;
-        private static string[] Scopes;
+        private static string[] ScopesList;
 
         public static string LOCAL_TOKEN_KEY = "RTOKEN";
 
@@ -44,14 +52,14 @@ namespace LemonLib.Storage
         public static void Initialize(string appId, params string[] scopes)
         {
             AppId = appId;
-            Scopes = scopes;
+            ScopesList = scopes;
         }
 
         public static async Task LoginWhithoutUI()
         {
             try
             {
-                Client = await OneDriveClient.GetSilentlyAuthenticatedMicrosoftAccountClient(AppId, "", Scopes, ApplicationData.Current.LocalSettings.Values[LOCAL_TOKEN_KEY] as string);
+                Client = await OneDriveClient.GetSilentlyAuthenticatedMicrosoftAccountClient(AppId, "", ScopesList, ApplicationData.Current.LocalSettings.Values[LOCAL_TOKEN_KEY] as string);
                 Session = Client.AuthenticationProvider.CurrentAccountSession;
                 ApplicationData.Current.LocalSettings.Values[LOCAL_TOKEN_KEY] = Session.RefreshToken;
             }
@@ -66,7 +74,7 @@ namespace LemonLib.Storage
 
             try
             {
-                Client = OneDriveClientExtensions.GetClientUsingWebAuthenticationBroker(AppId, Scopes);
+                Client = OneDriveClientExtensions.GetClientUsingWebAuthenticationBroker(AppId, ScopesList);
                 Session = await Client.AuthenticateAsync();
                 ApplicationData.Current.LocalSettings.Values[LOCAL_TOKEN_KEY] = Session.RefreshToken;
             }
