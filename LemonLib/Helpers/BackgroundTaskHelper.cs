@@ -12,15 +12,15 @@ namespace LemonLib.Helpers
         public static async Task<bool> RegisterAsync(string name, string entryPoint, IBackgroundTrigger trigger, Action onCompleted, Action<uint> onProgress = null)
         {
             BackgroundTaskRegistration registration = await RegisterAsync(name, entryPoint, trigger);
-            if(registration == null)
+            if (registration == null)
             {
                 return false;
             }
-            registration.Completed += (s,a) =>
+            registration.Completed += (s, a) =>
             {
                 onCompleted();
             };
-            if(onProgress != null)
+            if (onProgress != null)
             {
                 registration.Progress += (s, a) =>
                 {
@@ -49,11 +49,11 @@ namespace LemonLib.Helpers
 
         public static async Task<bool> Unregister(string name)
         {
-            BackgroundExecutionManager.RemoveAccess();
-            var access = await BackgroundExecutionManager.RequestAccessAsync();
+            RemoveAccess();
+            var access = await RequestAccessAsync();
             if (access == BackgroundAccessStatus.Denied)
                 return false;
-            foreach (var t in BackgroundTaskRegistration.AllTasks)
+            foreach (var t in GetAllTasks())
             {
                 if (t.Value.Name == name)
                 {
@@ -62,6 +62,21 @@ namespace LemonLib.Helpers
                 }
             }
             return false;
+        }
+
+        public static void RemoveAccess()
+        {
+            BackgroundExecutionManager.RemoveAccess();
+        }
+
+        public static async Task<BackgroundAccessStatus> RequestAccessAsync()
+        {
+            return await BackgroundExecutionManager.RequestAccessAsync();
+        }
+
+        public static IReadOnlyDictionary<Guid, IBackgroundTaskRegistration> GetAllTasks()
+        {
+            return BackgroundTaskRegistration.AllTasks;
         }
     }
 }
