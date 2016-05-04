@@ -1,4 +1,4 @@
-# Lemon-Lib
+# LemonLib
 A powerfull library for Universal Windows Platform (UWP)
 
 <h4>Namespaces</h4>
