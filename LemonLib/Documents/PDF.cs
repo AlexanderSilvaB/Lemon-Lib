@@ -109,7 +109,7 @@ namespace LemonLib.Documents
         public PageInfo GetPageInfo(uint pageIndex)
         {
             PageInfo info = new PageInfo();
-            if (!IsLoaded || pageIndex < 1 || pageIndex > PagesCount)
+            if (!IsLoaded || pageIndex < 0 || pageIndex >= PagesCount)
             {
                 info.Valid = false;
             }
