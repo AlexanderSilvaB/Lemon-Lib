@@ -47,5 +47,5 @@ The folder Examples contains a VS2015 project with samples for the LemonLib clas
 <br/>
 <b>Examples screenshots</b>
 <br/>
-<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Desktop.png" height="300px"/>
-<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Mobile.png" height="300px"/>
+<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Desktop.png" height="350px"/>
+<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Mobile.png" height="350px"/>
