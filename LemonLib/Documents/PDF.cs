@@ -186,5 +186,13 @@ namespace LemonLib.Documents
             await src.SetSourceAsync(stream);
             return src;
         }
+
+        public void Unload()
+        {
+            if(IsLoaded)
+            {
+                pdfDocument = null;
+            }
+        }
     }
 }

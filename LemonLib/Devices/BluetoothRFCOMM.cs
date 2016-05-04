@@ -84,7 +84,7 @@ namespace LemonLib.Devices
             return false;
         }
 
-        public async Task<bool?> IsOn()
+        public bool? IsOn()
         {
             if (BluetoothRadio != null)
             {
