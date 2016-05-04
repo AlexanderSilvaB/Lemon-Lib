@@ -46,5 +46,5 @@ Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxm
 The folder Examples contains a VS2015 project with samples for the LemonLib classes
 <br/>
 <b>Examples screenshots</b>
-<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Desktop.png" height="300px"/>
-<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Mobile.png" height="300px"/>
+<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Desktop.png" height="250px"/>
+<img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Mobile.png" height="250px"/>
