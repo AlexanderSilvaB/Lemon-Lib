@@ -34,8 +34,8 @@ namespace Examples
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UI.SetTitleBarColor(UI.AccentColor, Colors.White, UI.GetColor(UI.UIColorType.AccentDark1), UI.GetColor(UI.UIColorType.AccentDark2), UI.DeviceType.Both);
-            UI.SetTitleBarButtonsColor(UI.AccentColor, Colors.White, UI.ButtonState.Normal);
+            UIHelper.SetTitleBarColor(UIHelper.AccentColor, Colors.White, UIHelper.GetColor(UIHelper.UIColorType.AccentDark1), UIHelper.GetColor(UIHelper.UIColorType.AccentDark2), UIHelper.DeviceType.Both);
+            UIHelper.SetTitleBarButtonsColor(UIHelper.AccentColor, Colors.White, UIHelper.ButtonState.Normal);
 
             PageFrame.Navigate(typeof(HomePage));
 
@@ -48,6 +48,7 @@ namespace Examples
             Pages.Add(new PageItem() { Icon = "", Name = "OneDrive", Page = typeof(Samples.OneDrivePage) });
             Pages.Add(new PageItem() { Icon = "", Name = "BluetoothRfcomm", Page = typeof(Samples.BluetoothRFCOMMPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "ClipBoard", Page = typeof(Samples.ClipBoardPage) });
+            Pages.Add(new PageItem() { Icon = "", Name = "PDF", Page = typeof(Samples.PDFPage) });
 
             PagesListView.ItemsSource = Pages;
 

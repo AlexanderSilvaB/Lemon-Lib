@@ -42,8 +42,14 @@ namespace Examples.Samples
         private async void OnContentChanged()
         {
             string text = await ClipBoard.GetText();
-            if(text != null)
-                ClipBoardHistoryTextBlock.Text = text + "\n\n" + ClipBoardHistoryTextBlock.Text;
+            if (text != null)
+            {
+                try
+                {
+                    ClipBoardHistoryTextBlock.Text = text + "\n\n" + ClipBoardHistoryTextBlock.Text;
+                }
+                catch { }
+            }
         }
     }
 }

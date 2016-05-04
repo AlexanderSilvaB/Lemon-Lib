@@ -33,7 +33,7 @@ namespace Examples.Samples
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             ToggleSwitch btn = sender as ToggleSwitch;
-            UI.ExtendView(btn.IsOn);
+            UIHelper.ExtendView(btn.IsOn);
         }
 
         private void ToggleSwitch_Toggled_1(object sender, RoutedEventArgs e)
@@ -41,20 +41,20 @@ namespace Examples.Samples
             ToggleSwitch btn = sender as ToggleSwitch;
             if(btn.IsOn)
             {
-                UI.SetTitleBarColor(Colors.Red, Colors.White, Colors.PaleVioletRed, Colors.Gray, UI.DeviceType.Both);
-                UI.SetTitleBarButtonsColor(Colors.Red, Colors.White, UI.ButtonState.Normal);
+                UIHelper.SetTitleBarColor(Colors.Red, Colors.White, Colors.PaleVioletRed, Colors.Gray, UIHelper.DeviceType.Both);
+                UIHelper.SetTitleBarButtonsColor(Colors.Red, Colors.White, UIHelper.ButtonState.Normal);
             }
             else
             {
-                UI.SetTitleBarColor(UI.AccentColor, Colors.White, UI.GetColor(UI.UIColorType.AccentDark1), UI.GetColor(UI.UIColorType.AccentDark2), UI.DeviceType.Both);
-                UI.SetTitleBarButtonsColor(UI.AccentColor, Colors.White, UI.ButtonState.Normal);
+                UIHelper.SetTitleBarColor(UIHelper.AccentColor, Colors.White, UIHelper.GetColor(UIHelper.UIColorType.AccentDark1), UIHelper.GetColor(UIHelper.UIColorType.AccentDark2), UIHelper.DeviceType.Both);
+                UIHelper.SetTitleBarButtonsColor(UIHelper.AccentColor, Colors.White, UIHelper.ButtonState.Normal);
             }
         }
 
         private void ToggleSwitch_Toggled_2(object sender, RoutedEventArgs e)
         {
             ToggleSwitch btn = sender as ToggleSwitch;
-            if(!UI.SetFullScreen(btn.IsOn))
+            if(!UIHelper.SetFullScreen(btn.IsOn))
             {
                 btn.IsOn = !btn.IsOn;
             }
@@ -62,13 +62,13 @@ namespace Examples.Samples
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            AccentColor.Background = new SolidColorBrush(UI.AccentColor);
-            UI.OnColorsChange(OnColorsChange);
+            AccentColor.Background = new SolidColorBrush(UIHelper.AccentColor);
+            UIHelper.OnColorsChange(OnColorsChange);
         }
 
         private void OnColorsChange()
         {
-            AccentColor.Background = new SolidColorBrush(UI.AccentColor);
+            AccentColor.Background = new SolidColorBrush(UIHelper.AccentColor);
         }
     }
 }

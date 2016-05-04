@@ -10,6 +10,8 @@ A powerfull library for Universal Windows Platform (UWP)
 <b>Devices</b> - Provides classes for devices manipulation
 <br/>
 <b>Util</b> - Provides utility classes for UWP apps
+<br/>
+<b>Documents</b> - Provides classes to manipulate documents
 
 <h4>Classes</h4>
 
@@ -34,6 +36,8 @@ Obs.: This class needs that before you install Microsoft.OneDrive.SDK which can 
 Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxmanifest
 <br/>
 <b>Util.Clipboard</b> - Provives an easy way to set and get content from the clipboard
+<br/>
+<b>Documents.PDF</b> - Provives an easy way open and show pdf files
 <br/>
 
 

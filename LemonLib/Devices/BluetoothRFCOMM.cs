@@ -11,10 +11,6 @@ namespace LemonLib.Devices
 {
     public class BluetoothRfcomm
     {
-
-        // The Chat Server's custom service Uuid: 34B1CF4D-1069-4AD6-89B6-E161D79BE4D8
-        public static readonly Guid RfcommChatServiceUuid = Guid.Parse("34B1CF4D-1069-4AD6-89B6-E161D79BE4D8");
-
         // The Id of the Service Name SDP attribute
         public const UInt16 SdpServiceNameAttributeId = 0x100;
 
@@ -197,7 +193,8 @@ namespace LemonLib.Devices
                 uint actualStringLength = await chatReader.LoadAsync(stringLength);
                 if (actualStringLength != stringLength)
                 {
-                    // The underlying socket was closed before we were able to read the whole data
+                    eventArgs.Error = new Exception("Remote device closed connection");
+                    BluetoothSDPEvent?.Invoke(this, eventArgs);
                     return;
                 }
 
@@ -214,6 +211,8 @@ namespace LemonLib.Devices
                 {
                     if (chatSocket == null)
                     {
+                        eventArgs.Error = new Exception("Remote device disconnected", ex);
+                        BluetoothSDPEvent?.Invoke(this, eventArgs);
                         // Do not print anything here -  the user closed the socket.
                         // HResult = 0x80072745 - catch this (remote device disconnect) ex = {"An established connection was aborted by the software in your host machine. (Exception from HRESULT: 0x80072745)"}
                     }

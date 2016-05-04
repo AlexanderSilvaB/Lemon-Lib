@@ -12,7 +12,7 @@ using Windows.UI.ViewManagement;
 
 namespace LemonLib.Helpers
 {
-    public class UI
+    public class UIHelper
     {
         public enum UIColorType
         {

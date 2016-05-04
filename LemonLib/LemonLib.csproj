@@ -109,9 +109,10 @@
   <ItemGroup>
     <Compile Include="Devices\BluetoothRfcomm.cs" />
     <Compile Include="Devices\BluetoothDevices.cs" />
+    <Compile Include="Documents\PDF.cs" />
     <Compile Include="Helpers\BackgroundTaskHelper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
-    <Compile Include="Helpers\UI.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Storage\Files.cs" />
     <Compile Include="Storage\OneDrive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
