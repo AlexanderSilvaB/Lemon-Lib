@@ -12,10 +12,12 @@ A powerfull library for Universal Windows Platform (UWP)
 <b>Util</b> - Provides utility classes for UWP apps
 <br/>
 <b>Documents</b> - Provides classes to manipulate documents
+<br/>
+<b>Extensions</b> - Provides extensions other UWP classes and controls
 
 <h4>Classes</h4>
 
-<b>Helpers.ColorHelper</b> - Set of extensions to convert Color to Hex string and string to Color
+<b>Helpers.ColorHelper</b> - Set of methods to convert Color to Hex string and string to Color
 <br/>
 <b>Helpers.BackgroundTaskHelper</b> - Provides methods to easily register and unregister background tasks
 <br/>
@@ -38,6 +40,10 @@ Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxm
 <b>Util.Clipboard</b> - Provives an easy way to set and get content from the clipboard
 <br/>
 <b>Documents.PDF</b> - Provives an easy way open and show pdf files
+<br/>
+<b>Extensions.ColorExtension</b> - Extension to convert Color to Hex string and string to Color
+<br/>
+<b>Extensions.RichEditBoxExtension</b> - Extension to manipulate RichEditBox. With this extension you can add images, format, open and save RTF documents in RichEditBox.
 <br/>
 
 

@@ -110,6 +110,8 @@
     <Compile Include="Devices\BluetoothRfcomm.cs" />
     <Compile Include="Devices\BluetoothDevices.cs" />
     <Compile Include="Documents\PDF.cs" />
+    <Compile Include="Extensions\ColorExtension.cs" />
+    <Compile Include="Extensions\RichEditBoxExtension.cs" />
     <Compile Include="Helpers\BackgroundTaskHelper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />

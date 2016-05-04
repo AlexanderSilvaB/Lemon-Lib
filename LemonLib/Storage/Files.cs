@@ -30,7 +30,7 @@ namespace LemonLib.Storage
             Roaming = ApplicationData.Current.RoamingFolder;
         }
 
-        public static async Task<StorageFile> PickFile(params string[] extensions)
+        public static async Task<StorageFile> OpenFileDialog(params string[] extensions)
         {
             var picker = new FileOpenPicker
             {
@@ -42,6 +42,40 @@ namespace LemonLib.Storage
                 foreach (string extension in extensions)
                     picker.FileTypeFilter.Add(extension);
             var file = await picker.PickSingleFileAsync();
+            return file;
+        }
+
+        public static async Task<StorageFile> OpenFileDialogWithThumbnails(params string[] extensions)
+        {
+            var picker = new FileOpenPicker
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            if (extensions.Length == 0)
+                picker.FileTypeFilter.Add("*");
+            else
+                foreach (string extension in extensions)
+                    picker.FileTypeFilter.Add(extension);
+            var file = await picker.PickSingleFileAsync();
+            return file;
+        }
+
+        public static async Task<StorageFile> SaveFileDialog(params string[] extensions)
+        {
+            var picker = new FileSavePicker
+            {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+            if (extensions.Length == 0)
+                picker.FileTypeChoices.Add("All file types", new List<string> { "*" });
+            else
+            {
+                foreach (string extension in extensions)
+                    picker.FileTypeChoices.Add(extension + " file", new List<string> { extension });
+                picker.DefaultFileExtension = extensions[0];
+            }
+            var file = await picker.PickSaveFileAsync();
             return file;
         }
 

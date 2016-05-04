@@ -35,7 +35,7 @@ namespace Examples.Samples
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var file = await Files.PickFile(".pdf");
+            var file = await Files.OpenFileDialog(".pdf");
             var error = await pdf.Load(file);
             if(error != PDF.Errors.NoError)
             {
@@ -48,7 +48,7 @@ namespace Examples.Samples
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var file = await Files.PickFile(".pdf");
+            var file = await Files.OpenFileDialog(".pdf");
             var error = await pdf.Load(file);
             if (error != PDF.Errors.NoError)
             {

@@ -49,6 +49,7 @@ namespace Examples
             Pages.Add(new PageItem() { Icon = "", Name = "BluetoothRfcomm", Page = typeof(Samples.BluetoothRFCOMMPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "ClipBoard", Page = typeof(Samples.ClipBoardPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "PDF", Page = typeof(Samples.PDFPage) });
+            Pages.Add(new PageItem() { Icon = "", Name = "RichEditBoxEntension", Page = typeof(Samples.RichEditBoxExtensionPage) });
 
             PagesListView.ItemsSource = Pages;
 

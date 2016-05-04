@@ -13,7 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using LemonLib.Helpers;
+using LemonLib.Extensions;
+using LemonLib.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,25 +23,32 @@ namespace Examples.Samples
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ColorHelperPage : Page
+    public sealed partial class RichEditBoxExtensionPage : Page
     {
-        public ColorHelperPage()
+        public RichEditBoxExtensionPage()
         {
             this.InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ColorRectangle.Fill = new SolidColorBrush(ColorHelper.ToColor((sender as TextBox).Text));
-            }
-            catch { };
+            await EditBox.Open();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            SelectedColorTextBlock.Text = ColorHelper.ToHex(((sender as Button).Background as SolidColorBrush).Color);
+            await EditBox.Save();
+        }
+
+        private void AppBarButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            EditBox.Bold();
+        }
+
+        private async void AppBarButton_Click_3(object sender, RoutedEventArgs e)
+        {
+            var file = await Files.OpenFileDialog(RichEditBoxExtension.ImageTypes);
+            await EditBox.Insert(file);
         }
     }
 }
