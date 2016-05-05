@@ -67,5 +67,7 @@ The folder Examples contains a VS2015 project with samples for the LemonLib clas
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+Obs.: To keep LemonLib consitent, please add your classes in a group inside the LemonLib namespace, like LemonLib.Storage or LemonLib.Devices. You adding subgroups is also a good practice.
+
 ## License
 LemonLib is licensed under the MIT license. (http://opensource.org/licenses/MIT)
