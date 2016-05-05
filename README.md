@@ -3,7 +3,8 @@ A powerfull library for Universal Windows Platform (UWP)
 <br/>
 <a href="http://alexandersilvab.github.io/Lemon-Lib/">Website</a>
 <br/>
-<h4>Namespaces</h4>
+
+##Namespaces
 
 <b>Helpers</b> - Provides helpers for common UWP tasks
 <br/>
@@ -17,7 +18,7 @@ A powerfull library for Universal Windows Platform (UWP)
 <br/>
 <b>Extensions</b> - Provides extensions other UWP classes and controls
 
-<h4>Classes</h4>
+##Classes
 
 <b>Helpers.ColorHelper</b> - Set of methods to convert Color to Hex string and string to Color
 <br/>
@@ -49,7 +50,7 @@ Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxm
 <br/>
 
 
-<h4>Examples</h4>
+##Examples
 
 The folder Examples contains a VS2015 project with samples for the LemonLib classes
 <br/>
@@ -57,3 +58,6 @@ The folder Examples contains a VS2015 project with samples for the LemonLib clas
 <br/>
 <img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Desktop.png" height="350px"/>
 <img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Mobile.png" height="350px"/>
+
+## License
+LemonLib is licensed under the MIT license. (http://opensource.org/licenses/MIT)
