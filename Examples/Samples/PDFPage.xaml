@@ -16,6 +16,8 @@
             <Button Content="Load PDF" Click="Button_Click"/>
             <Button Content="Load with gray background" Click="Button_Click_1"/>
         </StackPanel>
-        <Image x:Name="Viewer" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None"/>
+        <ScrollViewer Grid.Row="1" ZoomMode="Enabled" MinZoomFactor="0.1" MaxZoomFactor="10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Image x:Name="Viewer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None"/>
+        </ScrollViewer>
     </Grid>
 </Page>
