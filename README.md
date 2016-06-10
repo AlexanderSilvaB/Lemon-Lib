@@ -17,6 +17,8 @@ A powerfull library for Universal Windows Platform (UWP)
 <b>Documents</b> - Provides classes to manipulate documents
 <br/>
 <b>Extensions</b> - Provides extensions other UWP classes and controls
+<br/>
+<b>Web</b> - Classes to simplify web content manipulation
 
 ##Classes
 
@@ -48,7 +50,14 @@ Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxm
 <br/>
 <b>Extensions.RichEditBoxExtension</b> - Extension to manipulate RichEditBox. With this extension you can add images, format, open and save RTF documents in RichEditBox.
 <br/>
-
+<b>Web.HttpContent</b> - Represents a container for web contents, you can use it to store data for a post request, upload files, cookies and much more.
+<br/>
+<b>Web.HttpResponse</b> - Represents the response from a server after some request. It contains the request code, the returned data, exceptions and cookies/headers.
+<br/>
+<b>Web.HttpRequester</b> - This class provides an easy way to make http requests like post, get, put or delete. It provides the interface to add cookies and headers such as authorization, user-agent, content-type or any other header you need.
+<br/>
+<b>Web.RestFul</b> - This class simplifies the manipulation of a RESTFul server, it easily allows you to make requests to an endpoint and passing any data you need. This class uses the class Web.HttpRequester as base.
+<br/>
 
 ##Examples
 
