@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="Examples.Samples.RestFulPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Examples.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBox Header="Server" Text="http://jsonplaceholder.typicode.com" HorizontalAlignment="Stretch" x:Name="serverTb"/>
+            <TextBox Header="Server" Text="posts/1" HorizontalAlignment="Stretch" x:Name="endpointTb"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="requestCb" Grid.Column="0" SelectedIndex="0" Header="Request type" HorizontalAlignment="Stretch" Margin="0">
+                    <ComboBoxItem>Get</ComboBoxItem>
+                    <ComboBoxItem>Post</ComboBoxItem>
+                    <ComboBoxItem>Put</ComboBoxItem>
+                    <ComboBoxItem>Delete</ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="actionBt" Content="Send" Grid.Column="1" Click="actionBt_Click" Margin="0" Height="{Binding ElementName=requestCb, Path=ActualHeight}"/>
+            </Grid>
+            <HyperlinkButton NavigateUri="http://jsonplaceholder.typicode.com/" Content="Server sample"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <TextBlock x:Name="terminal" TextWrapping="WrapWholeWords" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

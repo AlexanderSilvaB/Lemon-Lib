@@ -38,6 +38,8 @@ namespace LemonLib.Storage
 
         public static async Task<StorageFile> OpenFileDialog(params string[] extensions)
         {
+            if (!Initialized)
+                Initialize();
             var picker = new FileOpenPicker
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
@@ -53,6 +55,8 @@ namespace LemonLib.Storage
 
         public static async Task<StorageFile> OpenFileDialogWithThumbnails(params string[] extensions)
         {
+            if (!Initialized)
+                Initialize();
             var picker = new FileOpenPicker
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
@@ -69,6 +73,8 @@ namespace LemonLib.Storage
 
         public static async Task<StorageFile> SaveFileDialog(params string[] extensions)
         {
+            if (!Initialized)
+                Initialize();
             var picker = new FileSavePicker
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
@@ -152,6 +158,8 @@ namespace LemonLib.Storage
 
         public static async Task<StorageFolder> GetFolder(StorageFolder folder, string name)
         {
+            if (!Initialized)
+                Initialize();
             try
             {
                 folder = await folder.CreateFolderAsync(name, CreationCollisionOption.OpenIfExists);
@@ -212,6 +220,8 @@ namespace LemonLib.Storage
 
         public static async Task<string> Read(StorageFile file)
         {
+            if (!Initialized)
+                Initialize();
             return await FileIO.ReadTextAsync(file);
         }
 
@@ -223,6 +233,8 @@ namespace LemonLib.Storage
 
         public static async Task Write(StorageFile file, string data)
         {
+            if (!Initialized)
+                Initialize();
             await FileIO.WriteTextAsync(file, data);
         }
 
@@ -234,6 +246,8 @@ namespace LemonLib.Storage
 
         public static async Task Write(StorageFile file, Stream data)
         {
+            if (!Initialized)
+                Initialize();
             using (var ostream = await file.OpenStreamForWriteAsync())
             {
                 int count = 0;
@@ -261,6 +275,8 @@ namespace LemonLib.Storage
 
         protected static void GetStorage(string path, out string[] paths, out StorageFolder folder)
         {
+            if (!Initialized)
+                Initialize();
             string[] pathsArray = SplitPath(path);
             List<string> pathsList = new List<string>(pathsArray);
             StorageFolder tmpFolder = Local;
