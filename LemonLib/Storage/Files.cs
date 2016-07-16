@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 
 namespace LemonLib.Storage
 {
@@ -179,6 +180,36 @@ namespace LemonLib.Storage
             return folder;
         }
 
+        public static async Task<bool> Exists(string name)
+        {
+            string[] paths;
+            StorageFolder folder;
+            GetStorage(name, out paths, out folder);
+            int i = 1;
+            for (i = 1; i < paths.Length - 1; i++)
+            {
+                var item = await folder.TryGetItemAsync(paths[i]);
+                if (item == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    if(item.IsOfType(StorageItemTypes.Folder))
+                        folder = item as StorageFolder;
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            var item2 = await folder.TryGetItemAsync(paths[i]);
+            if (item2 != null)
+                return true;
+            else
+                return false;
+        }
+
         public static async Task<StorageFolder> GetFolder(string name)
         {
             string[] paths;
@@ -216,6 +247,31 @@ namespace LemonLib.Storage
                 folder = await GetFolder(folder, paths[i]);
             }
             return (await folder.GetFilesAsync()).ToArray();
+        }
+
+
+
+        public static async Task<byte[]> ReadBytes(StorageFile file)
+        {
+            if (!Initialized)
+                Initialize();
+            byte[] fileBytes = null;
+            using (IRandomAccessStreamWithContentType stream = await file.OpenReadAsync())
+            {
+                fileBytes = new byte[stream.Size];
+                using (DataReader reader = new DataReader(stream))
+                {
+                    await reader.LoadAsync((uint)stream.Size);
+                    reader.ReadBytes(fileBytes);
+                }
+            }
+            return fileBytes;
+        }
+
+        public static async Task<byte[]> ReadBytes(string fileName)
+        {
+            var file = await GetFile(fileName);
+            return await ReadBytes(file);
         }
 
         public static async Task<string> Read(StorageFile file)

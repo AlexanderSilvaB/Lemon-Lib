@@ -13,9 +13,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using LemonLib.Devices;
 using Windows.UI.Popups;
 using System.Threading.Tasks;
+using LemonLib.Devices.Bluetooth.Serial;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,7 +26,10 @@ namespace Examples.Samples
     /// </summary>
     public sealed partial class BluetoothRFCOMMPage : Page
     {
-        BluetoothRfcomm BluetoothClient;
+        Client BluetoothClient = null;
+        Server BluetoothServer = null;
+        string uuid = "34B1CF4D-1069-4AD6-89B6-E161D79BE4D8";
+
         public BluetoothRFCOMMPage()
         {
             this.InitializeComponent();
@@ -34,65 +37,42 @@ namespace Examples.Samples
             /*
              * Add bluetooth and radios DeviceCapability to Capabilities in Package.appxmanifest
              */
-
-            BluetoothClient = new BluetoothRfcomm("Bluetooth service");
-        }
-        
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (await BluetoothClient.RequestBluetoothAccess())
-            {
-                await ShowMessage("Bluetooth use allowed");
-            }
-            else
-            {
-                await ShowMessage("Could not use bluetooth");
-            }
         }
 
-        private async void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            bool IsOn = (sender as ToggleSwitch).IsOn;
-            if (IsOn)
+            base.OnNavigatedTo(e);
+            if(await LemonLib.Devices.Bluetooth.Device.RequestBluetoothAccess())
             {
-                if(await BluetoothClient.TurnBluetooth(true))
+                if (await LemonLib.Devices.Bluetooth.Device.TurnBluetooth(true))
                 {
-                    await ShowMessage("Bluetooth enabled");
+                    
                 }
                 else
                 {
-                    (sender as ToggleSwitch).IsOn = false;
                     await ShowMessage("Could not enable bluetooth");
                 }
             }
             else
             {
-                if (await BluetoothClient.TurnBluetooth(false))
-                {
-                    await ShowMessage("Bluetooth disabled");
-                }
-                else
-                {
-                    (sender as ToggleSwitch).IsOn = true;
-                    await ShowMessage("Could not disable bluetooth");
-                }
+                await ShowMessage("Could not use bluetooth");
             }
+
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var devices = await BluetoothClient.GetDevices();
+            var devices = await LemonLib.Devices.Bluetooth.Device.GetDevices(uuid);
             DevicesList.ItemsSource = devices;
         }
 
         private async void DevicesList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            BluetoothDevice device = e.ClickedItem as BluetoothDevice;
+            LemonLib.Devices.Bluetooth.Device device = e.ClickedItem as LemonLib.Devices.Bluetooth.Device;
             await BluetoothClient.Connect(device);
             if (BluetoothClient.IsConnected)
             {
-                await ShowMessage("Connect");
+                Log("Connected to " + device.Name + "[" + device.Address + "]");
             }
             else
             {
@@ -104,6 +84,84 @@ namespace Examples.Samples
         {
             MessageDialog dialog = new MessageDialog(message);
             await dialog.ShowAsync();
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (BluetoothClient != null)
+                BluetoothClient.Disconnect();
+            BluetoothClient = null;
+            BluetoothServer = new Server("Bluetooth service", uuid);
+            BluetoothServer.DataMode = LemonLib.Devices.Bluetooth.Device.DataModes.String;
+            BluetoothServer.OnReceive += OnReceive;
+            BluetoothServer.OnConnect += BluetoothServer_OnConnect;
+            if(await BluetoothServer.Start())
+            {
+                Log("Server running");
+            }
+            else
+            {
+                await ShowMessage("Could not start server");
+                BluetoothServer = null;
+            }
+        }
+
+        private void BluetoothServer_OnConnect(object sender, LemonLib.Devices.Bluetooth.ServerConnectionEventArgs e)
+        {
+            Log("Connected to "+e.Name+"["+e.Address+"]");
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (BluetoothServer != null)
+                BluetoothServer.Disconnect();
+            BluetoothServer = null;
+            BluetoothClient = new Client("Bluetooth service");
+            BluetoothClient.DataMode = LemonLib.Devices.Bluetooth.Device.DataModes.String;
+            BluetoothClient.OnReceive += OnReceive;
+            Log("Client running");
+            Button_Click_1(null, null);
+        }
+
+        private async void OnReceive(object sender, LemonLib.Devices.Bluetooth.SerialEventArgs e)
+        {
+            if(e.Message != null)
+                Log("Received: "+e.Message);
+            else if(e.Bytes != null)
+            {
+                Log("Received: "+(char)e.Bytes[0]);
+            }
+            else if(e.Error != null)
+            {
+                await ShowMessage(e.Error.Message);
+            }
+        }
+
+        private async void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            if(BluetoothClient != null && BluetoothClient.IsConnected)
+            {
+                await BluetoothClient.Write(send.Text);
+                Log("Sent: "+send.Text);
+            }
+            else if(BluetoothServer != null && BluetoothServer.IsConnected)
+            {
+                await BluetoothServer.Write(send.Text);
+                Log("Sent: " + send.Text);
+            }
+            else
+            {
+                await ShowMessage("Could not send, not connected!");
+            }
+        }
+
+        private async void Log(object obj)
+        {
+            await text.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                if (obj != null)
+                    text.Text = obj.ToString() + "\n" + text.Text;
+            });
         }
     }
 }

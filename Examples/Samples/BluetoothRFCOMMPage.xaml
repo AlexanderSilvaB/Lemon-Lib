@@ -8,22 +8,40 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel>
-                <Button Content="Request Access" Click="Button_Click"/>
-                <ToggleSwitch Header="Enabled" Toggled="ToggleSwitch_Toggled"/>
-                <Button Content="Refresh Devices" Click="Button_Click_1"/>
-                <ListView x:Name="DevicesList" IsItemClickEnabled="True" ItemClick="DevicesList_ItemClick">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock FontSize="{StaticResource TextStyleExtraLargeFontSize}" Text="{Binding Name}"/>
-                                <TextBlock FontSize="{StaticResource TextStyleLargeFontSize}" Text="{Binding Address}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".333*"/>
+            <ColumnDefinition Width=".333*"/>
+            <ColumnDefinition Width=".333*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Run Server" Click="Button_Click_2" Grid.Row="0" Grid.Column="0" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button Content="Run Client" Click="Button_Click_3" Grid.Row="0" Grid.Column="1" Margin="2" HorizontalAlignment="Stretch"/>
+        <Button Content="Refresh Devices" Click="Button_Click_1"  Grid.Row="0" Grid.Column="2" Margin="2" HorizontalAlignment="Stretch"/>
+        <ListView x:Name="DevicesList" IsItemClickEnabled="True" ItemClick="DevicesList_ItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock FontSize="{StaticResource TextStyleExtraLargeFontSize}" Text="{Binding Name}"/>
+                        <TextBlock FontSize="{StaticResource TextStyleLargeFontSize}" Text="{Binding Address}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock x:Name="text"/>
         </ScrollViewer>
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="send" Grid.Column="0"/>
+            <Button Content="Send" Grid.Column="1" Click="Button_Click_4"/>
+        </Grid>
     </Grid>
 </Page>

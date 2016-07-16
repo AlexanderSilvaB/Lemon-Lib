@@ -107,8 +107,10 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Devices\BluetoothRfcomm.cs" />
-    <Compile Include="Devices\BluetoothDevices.cs" />
+    <Compile Include="Devices\Bluetooth\Events.cs" />
+    <Compile Include="Devices\Bluetooth\Serial\Client.cs" />
+    <Compile Include="Devices\Bluetooth\Device.cs" />
+    <Compile Include="Devices\Bluetooth\Serial\Server.cs" />
     <Compile Include="Documents\PDF.cs" />
     <Compile Include="Extensions\ColorExtension.cs" />
     <Compile Include="Extensions\RichEditBoxExtension.cs" />
