@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.1.0</version>
+    <title>$title$</title>
+    <authors>Alexander Silva Barbosa</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/AlexanderSilvaB/Lemon-Lib/blob/master/README.md</licenseUrl>
+    <projectUrl>http://alexandersilvab.github.io/Lemon-Lib/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A powerfull library for Universal Windows Platform (UWP)</description>
+    <releaseNotes>
+		Namespaces added:
+			Helpers - Provides helpers for common UWP tasks such as UI, colors and background tasks
+			Storage - Provides classes for storage tasks such as local storage and OneDrive
+			Devices - Provides classes for devices manipulation
+			Devices.Bluetooth - Provides classes to manipulate bluetooth devices 
+			Util - Provides utility classes for UWP apps such as ClipBoard
+			Documents - Provides classes to manipulate documents such as PDF
+			Extensions - Provides extensions other UWP classes and controls such as richeditbox and color 
+			Web - Classes to simplify web content manipulation such as restful access and downloader/uploader
+	</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>uwp windows10 bluetooth serial restful http color image files storage pdf rich richeditbox web</tags>
+	<dependencies>
+	  <dependency id="Microsoft.OneDriveSDK" version="1.1.29" />
+	</dependencies>
+  </metadata>
+</package>
