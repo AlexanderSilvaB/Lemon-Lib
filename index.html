@@ -22,10 +22,13 @@
       <h1>
 <a id="lemonlib" class="anchor" href="#lemonlib" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LemonLib</h1>
 
-<p>A powerfull library for Universal Windows Platform (UWP)</p>
+<p>A powerfull library for Universal Windows Platform (UWP)
+<br>
+<a href="http://alexandersilvab.github.io/Lemon-Lib/">Website</a>
+<br></p>
 
-<h4>
-<a id="namespaces" class="anchor" href="#namespaces" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Namespaces</h4>
+<h2>
+<a id="namespaces" class="anchor" href="#namespaces" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Namespaces</h2>
 
 <p><b>Helpers</b> - Provides helpers for common UWP tasks
 <br>
@@ -33,14 +36,18 @@
 <br>
 <b>Devices</b> - Provides classes for devices manipulation
 <br>
+<b>Devices.Bluetooth</b> - Provides classes to manipulate bluetooth devices
+<br>
 <b>Util</b> - Provides utility classes for UWP apps
 <br>
 <b>Documents</b> - Provides classes to manipulate documents
 <br>
-<b>Extensions</b> - Provides extensions other UWP classes and controls</p>
+<b>Extensions</b> - Provides extensions other UWP classes and controls
+<br>
+<b>Web</b> - Classes to simplify web content manipulation</p>
 
-<h4>
-<a id="classes" class="anchor" href="#classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h4>
+<h2>
+<a id="classes" class="anchor" href="#classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h2>
 
 <p><b>Helpers.ColorHelper</b> - Set of methods to convert Color to Hex string and string to Color
 <br>
@@ -56,9 +63,11 @@ Obs.: To use this helper you need create a project for the background task and a
 <br>
 Obs.: This class needs that before you install Microsoft.OneDrive.SDK which can be obtained over NuGet
 <br>
-<b>Devices.BluetoothDevice</b> - Represents a bluetooth device
+<b>Devices.Bluetooth.Device</b> - Represents a bluetooth device
 <br>
-<b>Devices.BluetoothRfcomm</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth device
+<b>Devices.Bluetooth.Serial.Client</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth server device
+<br>
+<b>Devices.Bluetooth.Serial.Server</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth client device
 <br>
 Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxmanifest
 <br>
@@ -69,10 +78,18 @@ Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxm
 <b>Extensions.ColorExtension</b> - Extension to convert Color to Hex string and string to Color
 <br>
 <b>Extensions.RichEditBoxExtension</b> - Extension to manipulate RichEditBox. With this extension you can add images, format, open and save RTF documents in RichEditBox.
+<br>
+<b>Web.HttpContent</b> - Represents a container for web contents, you can use it to store data for a post request, upload files, cookies and much more.
+<br>
+<b>Web.HttpResponse</b> - Represents the response from a server after some request. It contains the request code, the returned data, exceptions and cookies/headers.
+<br>
+<b>Web.HttpRequester</b> - This class provides an easy way to make http requests like post, get, put or delete. It provides the interface to add cookies and headers such as authorization, user-agent, content-type or any other header you need.
+<br>
+<b>Web.RestFul</b> - This class simplifies the manipulation of a RESTFul server, it easily allows you to make requests to an endpoint and passing any data you need. This class uses the class Web.HttpRequester as base.
 <br></p>
 
-<h4>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h4>
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
 
 <p>The folder Examples contains a VS2015 project with samples for the LemonLib classes
 <br>
@@ -80,6 +97,24 @@ Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxm
 <br>
 <img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Desktop.png" height="300px">
 <img src="https://github.com/AlexanderSilvaB/Lemon-Lib/raw/master/Screenshots/Mobile.png" height="300px"></p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+<p>Obs.: To keep LemonLib consitent, please add your classes in a group inside the LemonLib namespace, like LemonLib.Storage or LemonLib.Devices. Adding subgroups is also a good practice.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>LemonLib is licensed under the MIT license. (<a href="http://opensource.org/licenses/MIT">http://opensource.org/licenses/MIT</a>)</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/AlexanderSilvaB/Lemon-Lib">LemonLib</a> is maintained by <a href="https://github.com/AlexanderSilvaB">AlexanderSilvaB</a>.</span>
