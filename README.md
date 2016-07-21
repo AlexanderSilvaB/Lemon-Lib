@@ -4,6 +4,12 @@ A powerfull library for Universal Windows Platform (UWP)
 <a href="http://alexandersilvab.github.io/Lemon-Lib/">Website</a>
 <br/>
 
+##Nuget
+To install LemonLib, run the following command in the Package Manager Console
+<br/>
+<b>Install-Package LemonLib</b>
+<br/>
+
 ##Namespaces
 
 <b>Helpers</b> - Provides helpers for common UWP tasks
