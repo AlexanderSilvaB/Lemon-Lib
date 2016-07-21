@@ -4,6 +4,12 @@ A powerfull library for Universal Windows Platform (UWP)
 <a href="http://alexandersilvab.github.io/Lemon-Lib/">Website</a>
 <br/>
 
+##Nuget
+To install LemonLib, run the following command in the Package Manager Console
+<br/>
+<b>Install-Package LemonLib</b>
+<br/>
+
 ##Namespaces
 
 <b>Helpers</b> - Provides helpers for common UWP tasks
@@ -11,6 +17,8 @@ A powerfull library for Universal Windows Platform (UWP)
 <b>Storage</b> - Provides classes for storage tasks
 <br/>
 <b>Devices</b> - Provides classes for devices manipulation
+<br/>
+<b>Devices.Bluetooth</b> - Provides classes to manipulate bluetooth devices
 <br/>
 <b>Util</b> - Provides utility classes for UWP apps
 <br/>
@@ -36,9 +44,11 @@ Obs.: To use this helper you need create a project for the background task and a
 <br/>
 Obs.: This class needs that before you install Microsoft.OneDrive.SDK which can be obtained over NuGet
 <br/>
-<b>Devices.BluetoothDevice</b> - Represents a bluetooth device
+<b>Devices.Bluetooth.Device</b> - Represents a bluetooth device
 <br/>
-<b>Devices.BluetoothRfcomm</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth device
+<b>Devices.Bluetooth.Serial.Client</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth server device
+<br/>
+<b>Devices.Bluetooth.Serial.Server</b> - Provives an easy and intuitive interface to comunicate with a rfcomm bluetooth client device
 <br/>
 Obs.: Add bluetooth and radios DeviceCapability to Capabilities in Package.appxmanifest
 <br/>
