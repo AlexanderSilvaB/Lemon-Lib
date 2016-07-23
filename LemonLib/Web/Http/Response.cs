@@ -6,32 +6,32 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LemonLib.Web
+namespace LemonLib.Web.Http
 {
-    public class HttpResponse
+    public class Response
     {
         protected byte[] Data { get; private set; }
         public HttpStatusCode StatusCode { get; private set; }
-        public HttpContent Headers { get; private set; }
-        public HttpContent Cookies { get; private set; }
+        public Content Headers { get; private set; }
+        public Content Cookies { get; private set; }
         public Encoding Encoding { get; private set; }
         public Exception Exception { get; private set; }
 
-        public HttpResponse(HttpResponseMessage response, string encoding)
+        public Response(HttpResponseMessage response, string encoding)
         {
-            this.Cookies = new HttpContent();
+            this.Cookies = new Content();
             this.Encoding = Encoding.GetEncoding(encoding ?? "UTF-8");
-            this.Headers = new HttpContent();
+            this.Headers = new Content();
             this.Exception = null;
             this.StatusCode = response.StatusCode;
             LoadContents(response);
         }
 
-        public HttpResponse(Exception exception, string encoding)
+        public Response(Exception exception, string encoding)
         {
-            this.Cookies = new HttpContent();
+            this.Cookies = new Content();
             this.Encoding = Encoding.GetEncoding(encoding ?? "UTF-8");
-            this.Headers = new HttpContent();
+            this.Headers = new Content();
             this.Exception = exception;
             this.StatusCode = 0;
         }

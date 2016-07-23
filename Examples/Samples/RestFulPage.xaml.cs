@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using LemonLib.Web;
+using LemonLib.Web.Http;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,14 +37,14 @@ namespace Examples.Samples
             try
             {
                 rest = new RestFul(new Uri(serverTb.Text));
-                HttpResponse response = null;
+                Response response = null;
                 switch(requestCb.SelectedIndex)
                 {
                     case 0:
                         response = await rest.GetAsync(endpointTb.Text);
                         break;
                     case 1:
-                        HttpContent data = new HttpContent();
+                        Content data = new Content();
                         data.Add("title", "Title test");
                         data.Add("body", "Body test");
                         response = await rest.PostAsync(endpointTb.Text, data);

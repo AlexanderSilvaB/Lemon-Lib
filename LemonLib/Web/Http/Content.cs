@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LemonLib.Web
+namespace LemonLib.Web.Http
 {
-    public class HttpContent : Dictionary<string, object>
+    public class Content : Dictionary<string, object>
     {
         public void Add(string key)
         {

@@ -7,22 +7,23 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using LemonLib.Web.Http;
 
 namespace LemonLib.Web
 {
-    public class RestFul : HttpRequester
+    public class RestFul : Requester
     {
         
         protected Uri uri;
 
-        public HttpContent Data = new HttpContent();
+        public Content Data = new Content();
 
         public RestFul(Uri uri)
         {
             this.uri = uri;
         }
 
-        public void SetData(HttpContent data)
+        public void SetData(Content data)
         {
             if (data != null)
                 this.Data = data;
@@ -43,46 +44,46 @@ namespace LemonLib.Web
             }
         }
 
-        protected async new Task<HttpResponse> RequestAsync(string url, RequestType type, HttpContent data = null)
+        protected async new Task<Response> RequestAsync(string url, RequestType type, Content data = null)
         {
             return await base.RequestAsync(url, type, null);
         }
 
-        protected async new Task<HttpResponse> GetAsync(string url = "")
+        protected async new Task<Response> GetAsync(string url = "")
         {
             return await base.GetAsync(url);
         }
 
-        public async Task<HttpResponse> GetAsync(string endpoint = "", HttpContent data = null)
+        public async Task<Response> GetAsync(string endpoint = "", Content data = null)
         {
             string url = GetUrl(endpoint, data);
             return await base.GetAsync(url);
         }
 
-        public async new Task<HttpResponse> PostAsync(string endpoint = "", HttpContent data = null)
+        public async new Task<Response> PostAsync(string endpoint = "", Content data = null)
         {
             string url = GetUrl(endpoint);
             return await base.PostAsync(url, data);
         }
 
-        public async new Task<HttpResponse> PutAsync(string endpoint = "", HttpContent data = null)
+        public async new Task<Response> PutAsync(string endpoint = "", Content data = null)
         {
             string url = GetUrl(endpoint);
             return await base.PutAsync(url, data);
         }
 
-        protected async new Task<HttpResponse> DeleteAsync(string url)
+        protected async new Task<Response> DeleteAsync(string url)
         {
             return await base.DeleteAsync(url);
         }
 
-        public async Task<HttpResponse> DeleteAsync(string endpoint = "", HttpContent data = null)
+        public async Task<Response> DeleteAsync(string endpoint = "", Content data = null)
         {
             string url = GetUrl(endpoint, data);
             return await base.DeleteAsync(url);
         }
 
-        protected string GetUrl(string endpoint = "", HttpContent data = null)
+        protected string GetUrl(string endpoint = "", Content data = null)
         {
             StringBuilder builder = new StringBuilder(uri.ToString());
             if (endpoint.Length > 0 && !uri.ToString().EndsWith("/") && !endpoint.StartsWith("/"))

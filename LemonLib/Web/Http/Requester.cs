@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace LemonLib.Web
+namespace LemonLib.Web.Http
 {
     public struct HttpAuthorization
     {
@@ -20,7 +20,7 @@ namespace LemonLib.Web
         }
     }
 
-    public class HttpRequester
+    public class Requester
     {
         
         
@@ -32,8 +32,8 @@ namespace LemonLib.Web
         public string ContentType = null;
 
         public HttpAuthorization? Authorization = null;
-        public HttpContent Cookies = new HttpContent();
-        public HttpContent Headers = new HttpContent();
+        public Content Cookies = new Content();
+        public Content Headers = new Content();
 
         public void SetAuthUser(string user, string password)
         {
@@ -55,27 +55,27 @@ namespace LemonLib.Web
             this.Authorization = new HttpAuthorization(schema, Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(parameters)));
         }
 
-        public async Task<HttpResponse> GetAsync(string url)
+        public async Task<Response> GetAsync(string url)
         {
             return await RequestAsync(url, RequestType.Get);
         }
 
-        public async Task<HttpResponse> PostAsync(string url, HttpContent data = null)
+        public async Task<Response> PostAsync(string url, Content data = null)
         {
             return await RequestAsync(url, RequestType.Post, data);
         }
 
-        public async Task<HttpResponse> PutAsync(string url, HttpContent data = null)
+        public async Task<Response> PutAsync(string url, Content data = null)
         {
             return await RequestAsync(url, RequestType.Put, data);
         }
 
-        public async Task<HttpResponse> DeleteAsync(string url)
+        public async Task<Response> DeleteAsync(string url)
         {
             return await RequestAsync(url, RequestType.Delete);
         }
 
-        public async Task<HttpResponse> RequestAsync(string url, RequestType type, HttpContent data = null)
+        public async Task<Response> RequestAsync(string url, RequestType type, Content data = null)
         {
             HttpClient client = new HttpClient();
             System.Net.Http.MultipartFormDataContent contents = null;
@@ -150,11 +150,11 @@ namespace LemonLib.Web
                 {
                     return null;
                 }
-                return new HttpResponse(response, this.Encoding);
+                return new Response(response, this.Encoding);
             }
             catch (Exception ex)
             {
-                return new HttpResponse(ex, this.Encoding);
+                return new Response(ex, this.Encoding);
             }
         }
     }

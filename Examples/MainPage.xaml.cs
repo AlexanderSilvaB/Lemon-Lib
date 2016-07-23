@@ -51,6 +51,7 @@ namespace Examples
             Pages.Add(new PageItem() { Icon = "", Name = "PDF", Page = typeof(Samples.PDFPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "RichEditBoxEntension", Page = typeof(Samples.RichEditBoxExtensionPage) });
             Pages.Add(new PageItem() { Icon = "", Name = "RestFul", Page = typeof(Samples.RestFulPage) });
+            Pages.Add(new PageItem() { Icon = "", Name = "Server", Page = typeof(Samples.ServerPage) });
 
             PagesListView.ItemsSource = Pages;
 

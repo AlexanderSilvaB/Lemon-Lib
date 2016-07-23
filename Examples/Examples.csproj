@@ -130,6 +130,9 @@
     <Compile Include="Samples\RichEditBoxExtensionPage.xaml.cs">
       <DependentUpon>RichEditBoxExtensionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Samples\ServerPage.xaml.cs">
+      <DependentUpon>ServerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Samples\UIPage.xaml.cs">
       <DependentUpon>UIPage.xaml</DependentUpon>
     </Compile>
@@ -196,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Samples\RichEditBoxExtensionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\ServerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
